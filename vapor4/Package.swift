@@ -22,6 +22,10 @@ let package = Package(
                 // the `.unsafeFlags` construct required by SwiftPM, this flag is recommended for Release
                 // builds. See <https://github.com/swift-server/guides/blob/main/docs/building.md#building-for-production> for details.
                 .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release)),
+                // Disable availability checking to use concurrency API on macOS for development purpose
+                // SwiftNIO exposes concurrency API with availability for deployment environment,
+                // but in our use case, the deployment target is Linux, and we only use macOS while development,
+                // so it's always safe to disable the checking in this situation.
                 .unsafeFlags(["-Xfrontend", "-disable-availability-checking"])
             ]
         ),
