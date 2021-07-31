@@ -1,0 +1,3 @@
+[submodule "isucon8-qualify"]
+	path = isucon8-qualify
+	url = https://github.com/isucon/isucon8-qualify.git
